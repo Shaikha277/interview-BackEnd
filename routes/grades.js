@@ -3,6 +3,7 @@ const router = express.Router()
 const gradesCTRL = require("../controllers/grades")
 
 router.get("/coursegrades/:courseId", gradesCTRL.gradeCourse)
-router.get("/studentgrades/:Id", gradesCTRL.gradeStudent)
+router.get("/studentgrades/:studentId", gradesCTRL.gradeStudent)
+router.post("/:studentId/:courseId", gradesCTRL.createGrade)
 
 module.exports = router
