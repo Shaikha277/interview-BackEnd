@@ -19,11 +19,12 @@ const createStudent = async (req, res) => {
 }
 
 const updateStudent = async (req, res) => {
+  // be very careful with this function because the function name is updateStudent and the variable name is updatedStudent ----> update & updated
   try {
-    let updatedStudent = await Student.updateOne(
-      { _id: req.params.id },
-      req.body
-    )
+    let updatedStudent = await Student.findOne({ _id: req.params.id })
+    courseId = req.body.courseId
+    updatedStudent.courses.push(courseId)
+    updatedStudent.save()
     res.json(updatedStudent)
   } catch (error) {
     res.json({ error: error.message })
