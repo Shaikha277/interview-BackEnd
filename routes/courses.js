@@ -3,7 +3,7 @@ const router = express.Router()
 
 const coursesCTRL = require("../controllers/courses")
 
-// router.get("/",)
+router.get("/", coursesCTRL.allCourses)
 
 router.post("/", coursesCTRL.createCourse)
 
