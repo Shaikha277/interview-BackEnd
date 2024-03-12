@@ -9,6 +9,19 @@ const createStudent = async (req, res) => {
   }
 }
 
+const updateStudent = async (req, res) => {
+  try {
+    let updatedStudent = await Student.updateOne(
+      { _id: req.params.id },
+      req.body
+    )
+    res.json(updatedStudent)
+  } catch (error) {
+    res.json({ error: error.message })
+  }
+}
+
 module.exports = {
   createStudent,
+  updateStudent,
 }
