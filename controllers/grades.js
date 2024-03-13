@@ -17,7 +17,10 @@ const gradeStudent = async (req, res) => {
 const gradeCourse = async (req, res) => {
   const courseId = req.params.courseId
   try {
-    let grades = await Grade.find({ courseId: courseId })
+    let grades = await Grade.find({ courseId: courseId }).populate([
+      "studentId",
+      "courseId",
+    ])
     res.json(grades)
   } catch (error) {
     res.json({ error: error.message })
